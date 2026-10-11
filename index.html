@@ -1,0 +1,609 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Your digital business card. Save contact details and connect with us.">
+  <title>Your Name | Digital Business Card</title>
+
+  <style>
+    :root {
+      --blue: #4263eb;
+      --cyan: #19b7c9;
+      --pink: #f45b9a;
+      --gold: #e8a800;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e8edf5;
+      --bg: #f5f8ff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 24px 14px 35px;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(ellipse at 5% 5%, #19b7c925, transparent 320px),
+        radial-gradient(ellipse at 95% 10%, #f45b9a20, transparent 300px),
+        var(--bg);
+    }
+
+    a { -webkit-tap-highlight-color: transparent; }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      margin: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0 4px 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--cyan));
+      font-size: 17px;
+    }
+
+    .available {
+      color: #16845b;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid #e5eaf3;
+      border-radius: 28px;
+      background: #fff;
+      box-shadow: 0 20px 60px #26385b15;
+    }
+
+    .hero {
+      position: relative;
+      padding: 34px 22px 28px;
+      text-align: center;
+      background: linear-gradient(135deg, #eafaff, #f4f0ff 55%, #fff0f6);
+    }
+
+    .avatar {
+      width: 105px;
+      height: 105px;
+      margin: 0 auto 16px;
+      display: grid;
+      place-items: center;
+      border: 5px solid white;
+      border-radius: 32px;
+      color: white;
+      background: linear-gradient(145deg, var(--blue), var(--cyan));
+      box-shadow: 0 9px 25px #4263eb35;
+      font-size: 30px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      letter-spacing: -1.2px;
+    }
+
+    .job-title {
+      margin: 9px 0 5px;
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .company {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .intro {
+      max-width: 360px;
+      margin: 15px auto 0;
+      color: #526078;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 22px 20px 8px;
+    }
+
+    .btn {
+      min-height: 49px;
+      padding: 13px 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      border-radius: 14px;
+      text-align: center;
+      text-decoration: none;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px #17203312;
+    }
+
+    .primary {
+      color: white;
+      background: linear-gradient(100deg, var(--blue), #657af5);
+    }
+
+    .whatsapp {
+      color: #087d4b;
+      background: #e9fbf1;
+      border-color: #d1f4e1;
+    }
+
+    .soft {
+      color: #27364e;
+      background: #f6f8fc;
+      border-color: #e8edf5;
+    }
+
+    .wide { grid-column: 1 / -1; }
+
+    .section {
+      padding: 21px 20px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      color: #8a94a7;
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .details {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+    }
+
+    .detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px;
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .detail:last-child { border-bottom: 0; }
+
+    .detail:hover { background: #fafbff; }
+
+    .icon {
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: #edf2ff;
+      font-size: 18px;
+    }
+
+    .teal { background: #e4fbfb; }
+    .pink { background: #fff0f6; }
+    .yellow { background: #fff7df; }
+
+    .detail-copy {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .detail-label {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--muted);
+      font-size: 11px;
+    }
+
+    .detail-value {
+      display: block;
+      overflow-wrap: anywhere;
+      font-size: 13px;
+      font-weight: 750;
+    }
+
+    .arrow {
+      color: #a3adbd;
+      font-size: 22px;
+    }
+
+    .socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .social {
+      padding: 11px 13px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      color: #34415a;
+      background: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .social:hover {
+      border-color: #bdc9ff;
+      background: #f8f9ff;
+    }
+
+    .review {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 15px;
+      border: 1px solid #f8e8b8;
+      border-radius: 16px;
+      background: linear-gradient(110deg, #fff8e7, #fff);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 17px;
+      letter-spacing: 2px;
+    }
+
+    .review-text {
+      margin: 5px 0 0;
+      color: #74664a;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .review-link {
+      margin-left: auto;
+      flex-shrink: 0;
+      color: #725100;
+      font-size: 12px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .footer {
+      padding: 20px 10px 4px;
+      color: #8b95a7;
+      text-align: center;
+      font-size: 11px;
+      line-height: 1.8;
+    }
+
+    .footer strong { color: #53617a; }
+
+    .toast {
+      position: fixed;
+      bottom: 22px;
+      left: 50%;
+      z-index: 10;
+      width: max-content;
+      max-width: 90%;
+      padding: 12px 18px;
+      border-radius: 12px;
+      color: white;
+      background: #172033;
+      font-size: 13px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translate(-50%, 15px);
+      transition: .2s;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translate(-50%, 0);
+    }
+
+    @media (max-width: 380px) {
+      body { padding: 12px 9px 25px; }
+      .hero { padding: 27px 15px 23px; }
+      .actions, .section { padding-left: 14px; padding-right: 14px; }
+      h1 { font-size: 26px; }
+      .btn { font-size: 12px; }
+      .review { flex-wrap: wrap; }
+      .review-link { margin-left: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-icon">N</span>
+        <span>Digital Card</span>
+      </div>
+      <span class="available">● Available to connect</span>
+    </div>
+
+    <article class="card">
+
+      <header class="hero">
+        <div class="avatar" id="avatar">AV</div>
+        <h1 id="displayName">Your Name</h1>
+        <p class="job-title" id="displayTitle">Your Job Title</p>
+        <p class="company" id="displayCompany">Your Business Name</p>
+        <p class="intro" id="displayIntro">
+          Welcome to my digital business card. Connect with me to learn
+          more about my services and how we can work together.
+        </p>
+      </header>
+
+      <div class="actions">
+        <button class="btn primary" id="saveContact" type="button">
+          ＋ Save Contact
+        </button>
+
+        <a class="btn whatsapp" id="whatsappBtn"
+           href="https://wa.me/91XXXXXXXXXX"
+           target="_blank" rel="noopener">
+          ◉ WhatsApp
+        </a>
+
+        <a class="btn soft" id="callBtn" href="tel:+91XXXXXXXXXX">
+          ☎ Call Me
+        </a>
+
+        <a class="btn soft" id="emailBtn"
+           href="mailto:hello@example.com">
+          ✉ Email Me
+        </a>
+
+        <a class="btn primary wide" id="directionsBtn"
+           href="https://maps.google.com/"
+           target="_blank" rel="noopener">
+          ⌖ Get Directions
+        </a>
+      </div>
+
+      <section class="section">
+        <h2 class="section-title">Contact Details</h2>
+
+        <div class="details">
+          <a class="detail" id="phoneDetail" href="tel:+91XXXXXXXXXX">
+            <span class="icon">☎</span>
+            <span class="detail-copy">
+              <span class="detail-label">Phone Number</span>
+              <span class="detail-value" id="displayPhone">+91 XXXXX XXXXX</span>
+            </span>
+            <span class="arrow">›</span>
+          </a>
+
+          <a class="detail" id="emailDetail"
+             href="mailto:hello@example.com">
+            <span class="icon teal">✉</span>
+            <span class="detail-copy">
+              <span class="detail-label">Email Address</span>
+              <span class="detail-value" id="displayEmail">hello@example.com</span>
+            </span>
+            <span class="arrow">›</span>
+          </a>
+
+          <a class="detail" id="websiteDetail"
+             href="https://example.com"
+             target="_blank" rel="noopener">
+            <span class="icon pink">↗</span>
+            <span class="detail-copy">
+              <span class="detail-label">Website</span>
+              <span class="detail-value" id="displayWebsite">example.com</span>
+            </span>
+            <span class="arrow">›</span>
+          </a>
+
+          <a class="detail" id="addressDetail"
+             href="https://maps.google.com/"
+             target="_blank" rel="noopener">
+            <span class="icon yellow">⌖</span>
+            <span class="detail-copy">
+              <span class="detail-label">Business Address</span>
+              <span class="detail-value" id="displayAddress">Your City, Gujarat, India</span>
+            </span>
+            <span class="arrow">›</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <h2 class="section-title">Connect With Me</h2>
+        <div class="socials">
+          <a class="social" id="instagramLink"
+             href="https://instagram.com/"
+             target="_blank" rel="noopener">◎ Instagram</a>
+
+          <a class="social" id="facebookLink"
+             href="https://facebook.com/"
+             target="_blank" rel="noopener">f Facebook</a>
+
+          <a class="social" id="linkedinLink"
+             href="https://linkedin.com/"
+             target="_blank" rel="noopener">in LinkedIn</a>
+        </div>
+      </section>
+
+      <section class="section" style="padding-top:0">
+        <h2 class="section-title">Google Reviews</h2>
+        <div class="review">
+          <div>
+            <div class="stars">★★★★★</div>
+            <p class="review-text">
+              Have we worked together? Share your experience.
+            </p>
+          </div>
+          <a class="review-link" id="reviewLink"
+             href="https://google.com/"
+             target="_blank" rel="noopener">
+            Write a review ↗
+          </a>
+        </div>
+      </section>
+
+    </article>
+
+    <footer class="footer">
+      Tap • Connect • Save<br>
+      <strong id="footerCompany">Your Business Name</strong>
+      · Digital Business Card
+    </footer>
+
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    Your contact card is ready.
+  </div>
+
+  <script>
+    /*
+      CUSTOMIZE YOUR BUSINESS CARD HERE.
+      Replace the example values with your actual details.
+    */
+
+    const contact = {
+      firstName: "Your",
+      lastName: "Name",
+      initials: "YN",
+      title: "Your Job Title",
+      company: "Your Business Name",
+      intro: "Welcome to my digital business card. Connect with me to learn more about my services and how we can work together.",
+
+      phoneDisplay: "+91 XXXXX XXXXX",
+      phone: "+91XXXXXXXXXX",
+      whatsapp: "91XXXXXXXXXX",
+
+      email: "hello@example.com",
+      website: "https://example.com",
+
+      address: "Your City, Gujarat, India",
+      maps: "https://maps.google.com/?q=Your+Business+Address",
+
+      instagram: "https://instagram.com/yourusername",
+      facebook: "https://facebook.com/yourusername",
+      linkedin: "https://linkedin.com/in/yourusername",
+
+      googleReview: "https://g.page/r/YOUR_REVIEW_LINK/review"
+    };
+
+    // Populate the page from the contact settings above.
+    document.getElementById("avatar").textContent = contact.initials;
+    document.getElementById("displayName").textContent =
+      contact.firstName + " " + contact.lastName;
+    document.getElementById("displayTitle").textContent = contact.title;
+    document.getElementById("displayCompany").textContent = contact.company;
+    document.getElementById("displayIntro").textContent = contact.intro;
+    document.getElementById("displayPhone").textContent = contact.phoneDisplay;
+    document.getElementById("displayEmail").textContent = contact.email;
+    document.getElementById("displayWebsite").textContent =
+      contact.website.replace(/^https?:\/\//, "").replace(/\/$/, "");
+    document.getElementById("displayAddress").textContent = contact.address;
+    document.getElementById("footerCompany").textContent = contact.company;
+
+    document.getElementById("whatsappBtn").href =
+      "https://wa.me/" + contact.whatsapp.replace(/\D/g, "");
+
+    document.getElementById("callBtn").href =
+      "tel:" + contact.phone.replace(/[^\d+]/g, "");
+
+    document.getElementById("phoneDetail").href =
+      "tel:" + contact.phone.replace(/[^\d+]/g, "");
+
+    document.getElementById("emailBtn").href = "mailto:" + contact.email;
+    document.getElementById("emailDetail").href = "mailto:" + contact.email;
+    document.getElementById("websiteDetail").href = contact.website;
+    document.getElementById("directionsBtn").href = contact.maps;
+    document.getElementById("addressDetail").href = contact.maps;
+
+    document.getElementById("instagramLink").href = contact.instagram;
+    document.getElementById("facebookLink").href = contact.facebook;
+    document.getElementById("linkedinLink").href = contact.linkedin;
+    document.getElementById("reviewLink").href = contact.googleReview;
+
+    // Download a contact file compatible with most phones.
+    document.getElementById("saveContact").addEventListener("click", function () {
+      const escapeVCard = value => String(value)
+        .replace(/\\/g, "\\\\")
+        .replace(/\n/g, "\\n")
+        .replace(/,/g, "\\,")
+        .replace(/;/g, "\\;");
+
+      const fullName = contact.firstName + " " + contact.lastName;
+      const lines = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:" + escapeVCard(contact.lastName) + ";" +
+          escapeVCard(contact.firstName) + ";;;",
+        "FN:" + escapeVCard(fullName),
+        "ORG:" + escapeVCard(contact.company),
+        "TITLE:" + escapeVCard(contact.title),
+        "TEL;TYPE=CELL:" + escapeVCard(contact.phone),
+        "EMAIL:" + escapeVCard(contact.email),
+        "URL:" + escapeVCard(contact.website),
+        "ADR;TYPE=WORK:;;" + escapeVCard(contact.address) + ";;;;",
+        "END:VCARD"
+      ];
+
+      const blob = new Blob([lines.join("\r\n")], {
+        type: "text/vcard;charset=utf-8"
+      });
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "business-contact.vcf";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2500);
+    });
+  </script>
+</body>
+</html>
